@@ -13,7 +13,6 @@ gem 'bundler'
 gem 'koala'
 
 group :development do
-  gem 'pry-rails'
   gem 'better_errors'
   gem 'guard-rails'
   gem 'pry'

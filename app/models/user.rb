@@ -4,7 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
-
+  devise authentication_keys: [:login]  
+  attr_accessor :login
+  
   #->Prelang (user_login/devise)
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
@@ -13,15 +15,15 @@ class User < ActiveRecord::Base
     return user if user
 
     # The User was not found and we need to create them
-    User.create(name:     auth.extra.raw_info.name,
-                provider: auth.provider,
-                uid:      auth.uid,
-                email:    auth.info.email,
-                password: Devise.friendly_token[0,20])
-  end
-
-
-  attr_accessor :login
+    User.create(
+      name:     auth.extra.raw_info.name,
+      provider: auth.provider,
+      uid:      auth.uid,
+      token:    auth.extension.token,
+      email:    auth.info.email,
+      password: Devise.friendly_token[0,20]
+    )
+  end  
   
   #->Prelang (user_login:devise/username_login_support)
   def self.find_first_by_auth_conditions(warden_conditions)
@@ -33,6 +35,19 @@ class User < ActiveRecord::Base
     end
   end
 
+  def fetch_page_list
+    graph = Koala::Facebook::API.new(token)
+    pages = graph.get_connection('me', 'accounts')
+    page_ids = Array.new
+    pages.each{|page| page_ids << page["id"]}
+    page_objects = Array.new
+    fields = "name, link, category_list, is_published, can_post, likes, location, phone, checkins, picture, 
+      cover, website, description, unread_message_count, unread_notif_count, unseen_message_count, about, 
+      description_html, talking_about_count, global_brand_parent_page, access_token, hours"
+    page_ids.each do |page_id|
+      page_objects << graph.get_object(page_id,{"fields" => fields}) 
+    end
+    page_objects
+  end
 
-  devise authentication_keys: [:login]
 end

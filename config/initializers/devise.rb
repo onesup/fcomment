@@ -258,6 +258,6 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.omniauth :facebook, 
     Rails.application.secrets.fb_app_id, Rails.application.secrets.fb_app_secret,
-    scope: 'email, user_photos, user_birthday, publish_actions, publish_stream',
+    scope: 'email, manage_pages, user_photos, user_birthday, publish_actions, publish_stream',
     provider_ignores_state: true
 end
