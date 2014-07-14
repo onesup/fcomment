@@ -20,9 +20,11 @@ class Page < ActiveRecord::Base
     page_ids = Array.new
     pages.each{|page| page_ids << page["id"]}
     page_objects = Array.new
-    fields = "name, link, category_list, is_published, can_post, likes, location, phone, checkins, picture, 
-      cover, website, description, unread_message_count, unread_notif_count, unseen_message_count, about, 
-      description_html, talking_about_count, global_brand_parent_page, access_token, hours"
+    fields = "name, link, category_list, is_published, can_post, likes, location, 
+      phone, checkins, picture, cover, website, description, unread_message_count, 
+      unread_notif_count, unseen_message_count, about, description_html, 
+      talking_about_count, global_brand_parent_page, access_token, hours, 
+      were_here_count, username"
     page_ids.each do |page_id|
       page_objects << graph.get_object(page_id,{"fields" => fields}) 
     end
@@ -30,10 +32,11 @@ class Page < ActiveRecord::Base
   end
   
   def self.building_page_form_fb_hash(hash)
-    page = Page.new
-    page.name                   = hash["name"] 
-    page.link                   = hash["link"]
-    page.category_list          = hash["category_list"]
+    page = Page.find_or_initialize_by(pid: hash["id"])
+    page.pid              = hash["id"] 
+    page.name             = hash["name"] 
+    page.link               = hash["link"]
+    page.category_list         = hash["category_list"]
     page.is_published           = hash["is_published"]
     page.can_post               = hash["can_post"]
     page.likes                  = hash["likes"]
@@ -44,8 +47,8 @@ class Page < ActiveRecord::Base
     page.cover                  = hash["cover"]
     page.website                = hash["website"]
     page.description              = hash["description"]
-    page.unread_message_count     = hash["unread_message_count"]
-    page.unread_notif_count       = hash["unread_notif_count"]
+    page.unread_message_count       = hash["unread_message_count"]
+    page.unread_notif_count         = hash["unread_notif_count"]
     page.unseen_message_count       = hash["unseen_message_count"]
     page.about                      = hash["about"]
     page.description_html           = hash["description_html"]

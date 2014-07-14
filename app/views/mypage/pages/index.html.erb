@@ -1,0 +1,13 @@
+<p><%= link_to '목록 새로 받아오기', update_from_fb_mypage_pages_path%></p>
+<ul>
+<% @pages.each do |page|%>
+	<li>
+    <%= link_to '#' do %>
+      <p>
+        <span><%= page.name %></span>
+        <span> 좋아요:[<%= number_with_delimiter(page.likes) %>]</span>
+      </p>
+    <% end %>
+  </li>
+<% end %>
+</ul>
