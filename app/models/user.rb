@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
         :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
   devise authentication_keys: [:login]  
+  has_many :pages
   attr_accessor :login
   
   #->Prelang (user_login/devise)
@@ -49,5 +50,6 @@ class User < ActiveRecord::Base
     end
     page_objects
   end
+  
 
 end

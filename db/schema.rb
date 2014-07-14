@@ -11,7 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709133908) do
+ActiveRecord::Schema.define(version: 20140714065122) do
+
+  create_table "pages", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "link"
+    t.text     "category_list"
+    t.string   "is_published"
+    t.string   "can_post"
+    t.integer  "likes"
+    t.string   "location"
+    t.string   "phone"
+    t.string   "checkins"
+    t.text     "picture"
+    t.string   "cover"
+    t.string   "website"
+    t.text     "description"
+    t.integer  "unread_message_count"
+    t.integer  "unread_notif_count"
+    t.integer  "unseen_message_count"
+    t.string   "about"
+    t.text     "description_html"
+    t.integer  "talking_about_count"
+    t.string   "global_brand_parent_page"
+    t.string   "access_token"
+    t.text     "hours"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pages", ["user_id"], name: "index_pages_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

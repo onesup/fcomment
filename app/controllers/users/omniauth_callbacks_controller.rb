@@ -37,7 +37,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     request = Net::HTTP::Get.new(uri.request_uri)
     response = http.request(request)
     matched_response = /access_token=(.+)&expires=(.+)/.match(response.body)
+    if matched_response.nil?
+      matched_response = /access_token=(.+)/.match(response.body) 
+      parsed_response = Hash["extension", Hash["token", matched_response[1]]]
+    end
     parsed_response = Hash["extension", Hash["token", matched_response[1], "expiry", matched_response[2]]]
+    
     return parsed_response
   end
   
