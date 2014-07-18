@@ -51,5 +51,4 @@ class User < ActiveRecord::Base
     page_objects
   end
   
-
 end
