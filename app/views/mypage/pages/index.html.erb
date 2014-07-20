@@ -1,4 +1,6 @@
-<p><%= link_to '목록 새로 받아오기', update_from_fb_mypage_pages_path%></p>
+<p class="btns" id="page_update_btn_wrapper">
+  <%= link_to '목록 새로 받아오기', update_from_fb_mypage_pages_path, id: "page_update_btn"%>
+</p>
 <ul>
 <% @pages.each do |page|%>
 	<li>

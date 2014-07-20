@@ -11,8 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.readyselector.js
 //= require bootstrap
-
-//= require_tree .
+//= require vanilla_functions
+//= require spin.js
+//= require mypage/pages
+//= require turbolinks
