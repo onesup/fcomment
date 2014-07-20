@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.4'
-gem 'mysql2'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -13,6 +12,7 @@ gem 'bundler'
 gem 'koala'
 
 group :development do
+  gem 'sqlite3'
   gem 'better_errors'
   gem 'guard-rails'
   gem 'pry'
@@ -46,3 +46,8 @@ group :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'
 end
+
+group :production do
+  gem 'mysql2'
+end
+
