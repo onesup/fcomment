@@ -10,8 +10,6 @@ class CreatePages < ActiveRecord::Migration
       t.string :can_post
       t.string :location
       t.string :phone
-      t.string :checkins
-      t.string :cover
       t.string :website
       t.string :about
       t.string :global_brand_parent_page
@@ -22,6 +20,8 @@ class CreatePages < ActiveRecord::Migration
       t.integer :unseen_message_count
       t.integer :were_here_count
       t.integer :likes
+      t.integer :checkins
+      t.text :cover
       t.text :category_list
       t.text :picture
       t.text :description
