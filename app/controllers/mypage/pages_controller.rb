@@ -14,8 +14,7 @@ class Mypage::PagesController < ApplicationController
   end
   
   def update_from_fb
-    @user = current_user
-    Page.update_pages(@user)
+    current_user.update_pages
     redirect_to mypage_pages_path
   end
 end
