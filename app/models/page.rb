@@ -31,6 +31,11 @@ class Page < ActiveRecord::Base
     page_objects
   end
   
+  def fetch_posts
+    graph = Koala::Facebook::API.new(User.last)
+    posts = graph.get_connection(Page.last.pid, 'feeds')
+  end
+  
   def self.building_page_form_fb_hash(hash)
     pid = hash['id']
     hash.delete 'id'
