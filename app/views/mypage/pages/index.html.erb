@@ -4,7 +4,7 @@
 <ul>
 <% @pages.each do |page|%>
 	<li>
-    <%= link_to '#' do %>
+    <%= link_to mypage_page_posts_path(page) do %>
       <p>
         <span><%= page.name %></span>
         <span> 좋아요:[<%= number_with_delimiter(page.likes) %>]</span>
