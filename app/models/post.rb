@@ -11,10 +11,11 @@ class Post < ActiveRecord::Base
         cid = result['id']
         
         comment = Comment.where(cid: cid).first_or_create
-        
+        comment.user = user
+        comment.post = self
         comment.cid = cid
-        comment.message = result['message']
         comment.raw_data = result.to_msgpack
+        comment.message = MessagePack.unpack(comment.raw_data)["message"]
         comment.save
       end
       results = results.next_page

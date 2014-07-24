@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'unicorn'
 gem 'bundler'
 gem 'koala'
+gem 'demoji' #Demoji, real utf8's emoji to empty spaces.
 
 group :development do
   gem 'sqlite3'

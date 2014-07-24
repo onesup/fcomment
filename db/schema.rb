@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140724133943) do
+ActiveRecord::Schema.define(version: 20140724180124) do
 
   create_table "comments", force: true do |t|
     t.string   "cid"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20140724133943) do
     t.string   "website"
     t.string   "about"
     t.string   "global_brand_parent_page"
-    t.string   "access_token"
+    t.text     "access_token"
     t.integer  "talking_about_count"
     t.integer  "unread_message_count"
     t.integer  "unread_notif_count"
@@ -87,13 +87,11 @@ ActiveRecord::Schema.define(version: 20140724133943) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
-    t.string   "token"
+    t.text     "token"
     t.string   "name"
     t.string   "username"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

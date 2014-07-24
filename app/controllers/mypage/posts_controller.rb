@@ -15,7 +15,7 @@ class Mypage::PostsController < ApplicationController
   
   def update_from_fb
     page = Page.find params[:page_id]
-    page.update_posts_to_raw_data
+    page.fetch_posts
     redirect_to mypage_page_posts_path(page)
   end
 end
