@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20140724114852) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["post_id"], name: "index_comments_on_post_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "pages", force: true do |t|
     t.integer  "user_id"
@@ -55,13 +55,12 @@ ActiveRecord::Schema.define(version: 20140724114852) do
     t.text     "hours"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "raw_data"
   end
 
-  add_index "pages", ["user_id"], name: "index_pages_on_user_id"
+  add_index "pages", ["user_id"], name: "index_pages_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
-    t.integer  "pid"
+    t.string   "pid"
     t.text     "message"
     t.binary   "raw_data"
     t.integer  "page_id"
@@ -70,8 +69,8 @@ ActiveRecord::Schema.define(version: 20140724114852) do
     t.datetime "updated_at"
   end
 
-  add_index "posts", ["page_id"], name: "index_posts_on_page_id"
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+  add_index "posts", ["page_id"], name: "index_posts_on_page_id", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -93,8 +92,8 @@ ActiveRecord::Schema.define(version: 20140724114852) do
     t.string   "username"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

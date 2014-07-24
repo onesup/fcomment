@@ -17,6 +17,7 @@ class Page < ActiveRecord::Base
       pid = result['id']
       post = Post.find_or_initialize_by(pid: pid)
       post.raw_data = result.to_msgpack
+      post.page = self
       post.save
     end
   end

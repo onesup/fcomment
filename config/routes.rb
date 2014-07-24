@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
   namespace :mypage do
+    resources :posts do
+      resources :comments do
+        collection do
+          get :update_from_fb
+        end
+      end
+    end
     resources :pages do
       resources :posts do
         collection do

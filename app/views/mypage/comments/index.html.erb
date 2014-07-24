@@ -1,0 +1,6 @@
+<p><%= image_tag @post_data["picture"] %></p>
+<p><%= @post_data["message"] %></p>
+<p class="btns" id="page_update_btn_wrapper">
+  <%= link_to '목록 새로 받아오기',
+    update_from_fb_mypage_post_comments_path(@post), id: "page_update_btn" %>
+</p>
