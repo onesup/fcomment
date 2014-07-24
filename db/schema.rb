@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723104737) do
+ActiveRecord::Schema.define(version: 20140723102933) do
 
   create_table "comments", force: true do |t|
     t.integer  "cid"
@@ -55,13 +55,12 @@ ActiveRecord::Schema.define(version: 20140723104737) do
     t.text     "hours"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "raw_data"
   end
 
   add_index "pages", ["user_id"], name: "index_pages_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
-    t.integer  "pid"
+    t.string   "pid"
     t.text     "message"
     t.text     "raw_data"
     t.integer  "page_id"

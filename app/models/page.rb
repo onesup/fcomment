@@ -14,7 +14,7 @@ class Page < ActiveRecord::Base
   def update_posts_to_raw_data
     results = user.facebook.get_connections(pid, 'posts')
     results.each do |result|
-      pid = result['id'].to_i
+      pid = result['id']
       post = Post.find_or_initialize_by(pid: pid)
       post.raw_data = result.to_msgpack
       post.save
