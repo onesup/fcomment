@@ -1,3 +1,13 @@
+<p>
+  <%= link_to mypage_pages_path(current_user) do %>
+    <span>페이지 목록으로 돌아가기</span>
+  <% end %>
+</p>
+<p>
+  <%= link_to mypage_page_posts_path(@post.page) do %>
+    <span>글 목록으로 돌아가기</span>
+  <% end %>
+</p>
 <p><%= image_tag @post_data["picture"] %></p>
 <p><%= @post_data["message"] %></p>
 <p class="btns" id="page_update_btn_wrapper">
