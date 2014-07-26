@@ -1,6 +1,7 @@
 class Mypage::CommentsController < ApplicationController
   def index
     @post = Post.find params[:post_id]
+    @page = @post.page
     @comments = @post.comments
   end
 

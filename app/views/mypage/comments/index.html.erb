@@ -20,7 +20,7 @@
 	<li>
     <div>
       <p>
-        <%= link_to "#", title: comment.data["id"] do %>
+        <%= link_to comment_url(comment), title: comment.data["id"], target: "_blank" do %>
           <span><%= comment.data["message"] %></span>
         <% end %>
       </p>
