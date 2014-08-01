@@ -15,7 +15,7 @@ class Post < ActiveRecord::Base
         comment.post = self
         comment.cid = cid
         comment.raw_data = result.to_msgpack
-        comment.message = MessagePack.unpack(comment.raw_data)["message"]
+        comment.message = result["message"]
         comment.save
       end
       results = results.next_page

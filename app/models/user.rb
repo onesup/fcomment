@@ -61,8 +61,10 @@ class User < ActiveRecord::Base
       unread_notif_count, unseen_message_count, about, description_html, 
       talking_about_count, global_brand_parent_page, access_token, hours, 
       were_here_count, username"
-    page_ids.each do |page_id|
-      page_objects << facebook.get_object(page_id,{"fields" => fields}) 
+    page_objects = facebook.batch do |batch_api|  
+      page_ids.each do |page_id|
+        batch_api.get_object(page_id,{"fields" => fields}) 
+      end
     end
     page_objects
   end
