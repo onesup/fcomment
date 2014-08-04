@@ -1,4 +1,5 @@
 class Mypage::PostsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @page = Page.find params[:page_id]
     @posts = @page.posts
