@@ -26,8 +26,11 @@
               class: "player_name", target: "_blank" do %>
               <%= comment.player.name %>
             <% end %>
-          <span><%= comment.data["message"] %></span>
         <% end %>
+        <%= link_to(comment.data["message"], comment_url(comment), target: "_blank") %>
+      </p>
+      <p>
+        <span><%= time_ago_in_words DateTime.parse(comment.data["created_time"]) %> 전</span>
       </p>
     </div>
   </li>

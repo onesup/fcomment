@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :mypage do
+    resources :games
     resources :posts do
       resources :comments do
         collection do

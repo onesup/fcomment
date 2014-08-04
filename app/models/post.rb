@@ -5,7 +5,6 @@ class Post < ActiveRecord::Base
   
   def fetch_comments
     results = user.facebook.get_connections(data['id'], 'comments', limit: 100, filter: 'stream')
-    
     begin
       results.each do |result|
         cid = result['id']
@@ -19,13 +18,18 @@ class Post < ActiveRecord::Base
         player.name = result["from"]["name"]
         player.save
         comment.player = player
+        comment.created_at = result["created_time"]
         comment.save
-        
-
       end
       results = results.next_page
     end while results != nil
-
+  end
+  
+  def comments_base_analytics
+    comments = self.comments
+    player_count = comments.pluck(:player_id).uniq.count
+    
+    result = {player_count: player_count}
   end
   
   def data

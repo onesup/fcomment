@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804024454) do
+ActiveRecord::Schema.define(version: 20140804052028) do
 
   create_table "comments", force: true do |t|
     t.string   "cid"
@@ -27,6 +27,23 @@ ActiveRecord::Schema.define(version: 20140804024454) do
   add_index "comments", ["player_id"], name: "index_comments_on_player_id", using: :btree
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "games", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.integer  "page_id"
+    t.string   "title"
+    t.datetime "start_time"
+    t.datetime "finish_time"
+    t.string   "play_type"
+    t.integer  "players_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "games", ["page_id"], name: "index_games_on_page_id", using: :btree
+  add_index "games", ["post_id"], name: "index_games_on_post_id", using: :btree
+  add_index "games", ["user_id"], name: "index_games_on_user_id", using: :btree
 
   create_table "pages", force: true do |t|
     t.integer  "user_id"
