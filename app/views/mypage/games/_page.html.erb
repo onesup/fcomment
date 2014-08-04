@@ -1,5 +1,11 @@
-<ul>
+<ul class="list-group">
   <% @pages.each do |page| %>
-    <li><%= page.name %></li>
+    <li class="list-group-item-cust list-group-item">
+      <span class="list-group-addon">
+        <input type="radio"/>
+      </span>
+      <!-- <span class="glyphicon glyphicon-camera"></span> -->
+      <span><%= page.name %></span>
+    </li>
   <% end %>
 </ul>

@@ -10,14 +10,15 @@
 * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
 * file per style scope.
 *
-*= require pc
 *= require_self
+*= require pc
 */
-@import "bootstrap_configuration";
-
-@import "bootstrap";
 
 //->Prelang (ui_framework:twitter_bootstrap)
+
+@import "bootstrap_configuration";
+@import "bootstrap";
+@import "bootstrap/theme";
 
 // Give everything in 'yield' margin to separate it.
 .yield {
@@ -32,4 +33,23 @@
 //->Prelang (user_login:devise)
 .form-user {
   max-width: 450px;
+}
+
+.list-group-item-cust {
+	padding-left: 0px;
+}
+.list-group-item-cust:first-child .list-group-addon {
+  border-top-left-radius: 4px;
+}
+.list-group-addon {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 10px;
+  padding-right: 6px;
+  margin-right: 10px;
+  display:inline;
+//  color: #555555;
+  text-align: center;
+  background-color: #eeeeee;
+  border: 1px solid #cccccc;
 }

@@ -1,14 +1,13 @@
 <div class="page-header">
-  <h1><%=t ".title", default: "Login" %></h1>
+  <h1>새 댓글 게임 만들기</h1>
 </div>
-
-<%= form_for(@game, html: {class: "form-horizontal form-user"}) do |f| %>
-                                                                                                                                        
-  
+<%= 
+  form_for([:mypage, @game], html: {class: "form-horizontal form-user"}) do |f| 
+%>
   <div class="form-group">
-    <%#= f.label :login, "Username or Email", class: "control-label col-md-4" %>
+    <%= f.label :page, "페이지 선택", class: "control-label col-md-4" %>
     <div class="col-md-8">
-      <%#= f.text_field :login, class: "text-field form-control", html: {spellcheck: "false"} %>
+      <%= render "page" %>
     </div>
   </div>
   
@@ -33,12 +32,8 @@
 
 <% end %>
 
-<h1>새 댓글 게임 만들기</h1>
+
 <ul>
-  <li>
-    <p>페이지 선택</p>
-      <%= render "page" %>
-  </li>
   <li>
     <p>포스트 선택</p>
   </li>
