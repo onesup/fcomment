@@ -17,6 +17,7 @@
 //= require bootstrap
 //= require vanilla_functions
 //= require spin.js
+//= require landings
 //= require mypage/pages
 //= require mypage/posts
 //= require mypage/comments

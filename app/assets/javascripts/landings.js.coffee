@@ -1,3 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(".landings").ready ->
+  $("#fb_login_btn").click (e) ->
+    target = document.getElementById('fb_login_btn')
+    spin_to(target)
+    return
+  return

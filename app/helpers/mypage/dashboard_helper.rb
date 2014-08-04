@@ -1,0 +1,2 @@
+module Mypage::DashboardHelper
+end
