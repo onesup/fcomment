@@ -18,4 +18,6 @@
 //= require vanilla_functions
 //= require spin.js
 //= require mypage/pages
+//= require mypage/posts
+//= require mypage/comments
 //= require turbolinks

@@ -12,7 +12,7 @@
 <p><%= @post.data["message"] %></p>
 <p class="btns" id="page_update_btn_wrapper">
   <%= link_to '목록 새로 받아오기',
-    update_from_fb_mypage_post_comments_path(@post), id: "page_update_btn" %>
+    update_from_fb_mypage_post_comments_path(@post), id: "comment_update_btn" %>
 </p>
 <p>댓글 총 <%= @comments.count %>개</p>
 <ul>
@@ -21,6 +21,11 @@
     <div>
       <p>
         <%= link_to comment_url(comment), title: comment.id, target: "_blank" do %>
+          <span class="players">
+            <%= link_to "http://www.facebook.com/#{comment.player.pid}", 
+              class: "player_name", target: "_blank" do %>
+              <%= comment.player.name %>
+            <% end %>
           <span><%= comment.data["message"] %></span>
         <% end %>
       </p>

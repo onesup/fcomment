@@ -2,7 +2,7 @@ class Mypage::CommentsController < ApplicationController
   def index
     @post = Post.find params[:post_id]
     @page = @post.page
-    @comments = @post.comments
+    @comments = @post.comments.includes(:player).order(id: :desc)
   end
 
   def edit
