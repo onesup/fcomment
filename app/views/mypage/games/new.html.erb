@@ -7,7 +7,9 @@
   <div class="form-group">
     <%= f.label :page, "페이지 선택", class: "control-label col-md-4" %>
     <div class="col-md-8">
-      <%= render "page" %>
+      <ul class="list-group">
+        <%= render partial: "page", collection: @pages, locals: {f: f} %>
+      </ul>
     </div>
   </div>
   
