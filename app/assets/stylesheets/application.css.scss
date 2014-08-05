@@ -41,6 +41,9 @@
 .list-group-item-cust:first-child .list-group-addon {
   border-top-left-radius: 4px;
 }
+.list-group-item-cust:last-child .list-group-addon{
+  border-bottom-left-radius: 4px;
+}
 .list-group-addon {
   padding-top: 12px;
   padding-bottom: 12px;

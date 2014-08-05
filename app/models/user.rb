@@ -45,8 +45,11 @@ class User < ActiveRecord::Base
   end
   
   def update_pages
+    exclude_ids = %w(419335061518001 244363839097486 740416439313459)
     fetch_page_list.each do |page|
-      self.pages << building_page_form_fb_hash(page)
+      unless page['id'].in? exclude_ids
+        self.pages << building_page_form_fb_hash(page)
+      end
     end
     save
   end
