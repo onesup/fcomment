@@ -7,6 +7,7 @@ class CreateGames < ActiveRecord::Migration
       t.string :title
       t.datetime :start_time
       t.datetime :finish_time
+      t.string :status
       t.string :play_type
       t.integer :players_count
 

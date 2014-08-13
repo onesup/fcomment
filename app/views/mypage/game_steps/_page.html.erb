@@ -1,0 +1,12 @@
+<li class="list-group-item-cust list-group-item">
+  <span class="list-group-addon">
+    <%= f.radio_button :page_id, page.id, class: "page-id-radio-btn" %>
+  </span>
+  <span>
+    <%= f.label :page_id, page.name, value: page.id, 
+      class: "list-group-label" %>
+  </span>
+  <span>
+    <%= number_with_delimiter(page.likes) %>
+  </span>
+</li>

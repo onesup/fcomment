@@ -4,6 +4,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  
+  def current_game
+    unless session[:game_id].nil?
+      game = Game.find_or_create_by id: session[:game_id]
+      game.user = current_user
+      game.save
+      game
+    else
+      game = Game.create(user: current_user)
+      session[:game_id] = game.id
+      game
+    end
+  end
 
   protected
 
@@ -15,8 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
 
-  private
-  
+  private  
   #-> Prelang (user_login:devise)
   def require_user_signed_in
     unless user_signed_in?

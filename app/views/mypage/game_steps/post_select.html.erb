@@ -1,9 +1,4 @@
-<div class="page-header">
-  <h1>새 댓글 게임 만들기</h1>
-</div>
-<%= 
-  form_for([:mypage, @game], html: {class: "form-horizontal form-user"}) do |f| 
-%>
+<%= render :layout => 'form' do |f| %>  
   <div class="form-group">
     <%= f.label :page, "페이지 선택", class: "control-label col-md-4" %>
     <div class="col-md-8" id="page-id-select">
@@ -53,4 +48,8 @@
       <%#= render "devise/shared/links" %>
     </div>
   </div>
+  <div class="actions">
+      <%= f.submit "Continue" %>
+      or <%= link_to "skip this step", next_wizard_path %>
+    </div>
 <% end %>

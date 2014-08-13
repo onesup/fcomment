@@ -1,0 +1,2 @@
+module Mypage::GameStepsHelper
+end

@@ -25,6 +25,10 @@ class Post < ActiveRecord::Base
     end while results != nil
   end
   
+  def game_result
+    
+  end
+  
   def comments_base_analytics
     comments = self.comments
     player_count = comments.pluck(:player_id).uniq.count

@@ -7,10 +7,46 @@ class Mypage::GamesController < ApplicationController
       redirect_to mypage_pages_path
     end
   end
+  
+  def show
+    @game = Game.find params[:id]
+  end
 
   def edit
   end
 
   def index
   end
+  
+  def create
+    @game = Game.new
+    respond_to do |format|
+      if @game.save
+        format.html { redirect_to @game}
+        format.json { render :show, status: :created, location: @game }
+      else
+        format.html { render :new }
+        format.json { render json: @game.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  def update
+    respond_to do |format|
+      if @game.update(game_params)
+        format.html { redirect_to @game, notice: 'Game was successfully updated.' }
+        format.json { render :show, status: :ok, location: @game }
+      else
+        format.html { render :edit }
+        format.json { render json: @game.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  private
+  
+  def game_params
+    params.require(:game).permit(:page_id, :post_id)
+  end
+  
 end

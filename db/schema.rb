@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140804052028) do
     t.string   "title"
     t.datetime "start_time"
     t.datetime "finish_time"
+    t.string   "status"
     t.string   "play_type"
     t.integer  "players_count"
     t.datetime "created_at"
