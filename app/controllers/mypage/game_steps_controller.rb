@@ -10,7 +10,6 @@ class Mypage::GameStepsController < ApplicationController
     else
       render_wizard
     end
-    
   end
   
   def new
@@ -29,9 +28,7 @@ class Mypage::GameStepsController < ApplicationController
   
   private
   def game_params
-    params.require(:game).permit(:page_id, :post_id)
+    params.require(:game)
+      .permit(:page_id, :post_id, :title, :start_time, :finish_time)
   end
-    # def redirect_to_finish_wizard
-    #   redirect_to root_url, notice: "Thank you for signing up."
-    # end
 end

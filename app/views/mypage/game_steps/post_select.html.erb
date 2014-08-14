@@ -13,10 +13,11 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :post, "포스트 선택", class: "control-label col-md-4" %>
+    <%= f.label :post_id, "포스트 선택", class: "control-label col-md-4" %>
+    <%= f.hidden_field :post_id %>
     <div class="col-md-8">
       <div class="posts-list list-group">
-        <a href="#" class="list-group-item post-element">
+        <a href="#" class="list-group-item post-element" data-post-id="0">
           <div class="panel panel-default">
             <div class="panel-body">
               <p>

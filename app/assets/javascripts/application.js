@@ -20,6 +20,6 @@
 //= require landings
 //= require mypage/pages
 //= require mypage/posts
-//= require mypage/games
+//= require mypage/game_steps
 //= require mypage/comments
 //= require turbolinks
