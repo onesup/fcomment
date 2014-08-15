@@ -1,2 +1,10 @@
 <h1>댓글 게임 목록</h1>
-<p><%= link_to '댓글 게임 새로 만들기', new_mypage_game_build_path %></p>
+<p><%= link_to '댓글 게임 새로 만들기', mypage_game_steps_path %></p>
+<ul>
+<% @games.each do |game| %>
+<li>
+  <%= link_to image_tag(game.post.data["picture"]), mypage_game_path(game)%>
+  <p><%= game.post.data["message"] %></p>
+</li>
+<% end %>
+</ul>

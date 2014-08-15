@@ -1,0 +1,9 @@
+<p><%= link_to "목록으로 돌아가기", mypage_games_path%></p>
+<h1><%= @game.title%></h1>
+<div>
+  <p><%= @game.page.name %></p>
+  <p><%= image_tag @post.data["picture"] %></p>
+  <p><%= @post.data["message"] %></p>
+  <p><%= @game.start_time %></p>
+  <p><%= @game.finish_time %></p>
+</div>

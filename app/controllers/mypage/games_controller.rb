@@ -10,12 +10,14 @@ class Mypage::GamesController < ApplicationController
   
   def show
     @game = Game.find params[:id]
+    @post = @game.post
   end
 
   def edit
   end
 
   def index
+    @games = Game.where.not(post_id: nil).order("id desc")
   end
   
   def create

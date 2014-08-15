@@ -23,7 +23,8 @@ class Mypage::GameStepsController < ApplicationController
   end
   
   def finish_wizard_path
-    mypage_game_path(current_game)
+    session[:game_id] = nil
+    mypage_game_path(@game)
   end
   
   private
