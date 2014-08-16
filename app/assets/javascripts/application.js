@@ -21,5 +21,6 @@
 //= require mypage/pages
 //= require mypage/posts
 //= require mypage/game_steps
+//= require mypage/games
 //= require mypage/comments
 //= require turbolinks

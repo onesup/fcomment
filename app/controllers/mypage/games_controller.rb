@@ -33,6 +33,11 @@ class Mypage::GamesController < ApplicationController
     end
   end
   
+  def toggle_status
+    @game = Game.find params[:id]
+    @game.toggle_status
+  end
+  
   def update
     respond_to do |format|
       if @game.update(game_params)

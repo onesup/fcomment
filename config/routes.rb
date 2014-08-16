@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   namespace :mypage do
     get 'dashboard/index'
-    resources :games
+    resources :games do
+      member do
+        post :toggle_status
+      end
+    end
     resources :game_steps
     resources :posts do
       resources :comments do

@@ -6,4 +6,8 @@
   <p><%= @post.data["message"] %></p>
   <p><%= @game.start_time %></p>
   <p><%= @game.finish_time %></p>
+  <p>
+    <%= link_to status_toggle_text_helper(@game.status), '#', 
+      id: "toggle-status", 'data-game-id' => @game.id %>
+  </p>
 </div>

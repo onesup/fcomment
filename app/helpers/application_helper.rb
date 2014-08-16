@@ -7,4 +7,12 @@ module ApplicationHelper
     url = 'https://www.facebook.com/'+@page.pid+"/posts/"+pid
     url = url + "?comment_id=" + cid + "&offset=" + offset.to_s
   end
+  
+  def status_toggle_text_helper(status)
+    if status == 'stop'
+      toggle_text = '정지됨'
+    else
+      toggle_text = '작동중'
+    end
+  end
 end
