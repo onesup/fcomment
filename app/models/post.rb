@@ -8,18 +8,24 @@ class Post < ActiveRecord::Base
     begin
       results.each do |result|
         cid = result['id']
-        comment = Comment.where(cid: cid).first_or_create
-        comment.user = user
-        comment.post = self
-        comment.cid = cid
-        comment.raw_data = result.to_msgpack
-        comment.message = result["message"]
-        player = Player.find_or_initialize_by(pid: result["from"]["id"])
-        player.name = result["from"]["name"]
-        player.save
-        comment.player = player
-        comment.created_at = result["created_time"]
-        comment.save
+        begin
+          Comment.transaction do
+            comment = Comment.where(cid: cid).lock(true).first_or_create
+            comment.user = user
+            comment.post = self
+            comment.cid = cid
+            comment.raw_data = result.to_msgpack
+            comment.message = result["message"]
+            player = Player.find_or_initialize_by(pid: result["from"]["id"])
+            player.name = result["from"]["name"]
+            player.save
+            comment.player = player
+            comment.created_at = result["created_time"]
+            comment.save!
+          end
+        rescue Mysql2::Error
+          puts "@@@@@.d.e.a.d.l.o.c.k.@@@@@"
+        end
       end
       results = results.next_page
     end while results != nil

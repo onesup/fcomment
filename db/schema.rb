@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20140804052028) do
     t.datetime "start_time"
     t.datetime "finish_time"
     t.string   "status",        default: "stop"
+    t.string   "fetch_status",  default: "stop"
     t.string   "play_type"
     t.integer  "players_count"
     t.datetime "created_at"

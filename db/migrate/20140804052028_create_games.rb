@@ -8,6 +8,7 @@ class CreateGames < ActiveRecord::Migration
       t.datetime :start_time
       t.datetime :finish_time
       t.string :status, default: 'stop'
+      t.string :fetch_status, default: 'stop'
       t.string :play_type
       t.integer :players_count
 

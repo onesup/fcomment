@@ -24,6 +24,14 @@ gem 'omniauth-facebook'
 gem 'tzinfo-data'
 gem 'validates_formatting_of'
 gem 'wicked'
+gem 'sidekiq'
+gem 'sidetiq'
+gem 'sinatra', '>= 1.3.0', :require => nil
+# gem 'sucker_punch', '~> 1.1'
+# gem 'fist_of_fury', '~> 0.2.6'
+# gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
+# gem 'clockwork'
+# gem 'daemons'
 
 group :development do
   gem 'sqlite3'
