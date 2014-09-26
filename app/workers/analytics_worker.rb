@@ -1,5 +1,6 @@
 class AnalyticsWorker
   include Sidekiq::Worker
+  # sidekiq_options unique: true
   
   def perform(game_id)
     puts "@@@@@@@" + game_id.to_s

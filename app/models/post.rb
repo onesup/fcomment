@@ -9,8 +9,10 @@ class Post < ActiveRecord::Base
       results.each do |result|
         cid = result['id']
         begin
-          Comment.transaction do
-            comment = Comment.where(cid: cid).lock(true).first_or_create
+          # Comment.transaction do
+            # comment = Comment.where(cid: cid).lock(true).first_or_create
+            comment = Comment.where(cid: cid).first_or_create
+            comment.void_transaction
             comment.user = user
             comment.post = self
             comment.cid = cid
@@ -22,7 +24,7 @@ class Post < ActiveRecord::Base
             comment.player = player
             comment.created_at = result["created_time"]
             comment.save!
-          end
+          # end
         rescue Mysql2::Error
           puts "@@@@@.d.e.a.d.l.o.c.k.@@@@@"
         end

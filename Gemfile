@@ -26,6 +26,7 @@ gem 'validates_formatting_of'
 gem 'wicked'
 gem 'sidekiq'
 gem 'sidetiq'
+gem 'sidekiq-unique-jobs'
 gem 'sinatra', '>= 1.3.0', :require => nil
 # gem 'sucker_punch', '~> 1.1'
 # gem 'fist_of_fury', '~> 0.2.6'
